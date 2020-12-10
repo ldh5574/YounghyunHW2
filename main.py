@@ -77,13 +77,25 @@ scene.append_to_caption(' \nBall Initial Position: ')
 ballInitPosSlider = slider(min = -ground.size.y/2, max = ground.size.y/2 - ball_box.size.y - ball.radius*2, value = 0, bind = setBallInitPos)
 scene.append_to_caption(ballInitPosSlider.min, 'to' ,ballInitPosSlider.max, '\n')
 
-def setBallInitPos():
+def setGoalAreaPos():
     #########################################################
     #                                                                                                       
-    # (2-1) set ball initial position                                                                  
+    # (1) set goal area position                                                                     
     #                                                                                                       
     #########################################################
+    print("goalAreaPosSlider.value = ", goalAreaPosSlider.value)
+#    goalAreaPosSlider.value = 20
+    print("goal_1.pos.y = ", goal_1.pos.y)
+    print("goal_2.pos.y = ", goal_2.pos.y)
+    print("goal_3.pos.y = ", goal_3.pos.y)
+    if goalAreaPosSlider.value >= goalAreaPosSlider.max:
+        goalAreaPosSlider.value = goalAreaPosSlider.max
+    goal_1.pos.y = goal_1.pos.y + goalAreaPosSlider.value # back
+    goal_2.pos.y = goal_2.pos.y + goalAreaPosSlider.value # top
+    goal_3.pos.y = goal_3.pos.y + goalAreaPosSlider.value # bottom
+    
     pass
+setGoalAreaPos()
     
 #ball initial velocity
 scene.append_to_caption(' \nBall Initial Velocity X: ')
